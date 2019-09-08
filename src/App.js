@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import RegisterPlayers from './components/RegisterPlayers';
-
+import Round from './components/Round';
+import Winner from './components/Winner';
 function App() {
   
   const [view, setView] = useState(1);
@@ -14,7 +15,9 @@ function App() {
       case 1: 
         return <RegisterPlayers setPlayerOne={ setPlayerOne } setPlayerTwo={ setPlayerTwo } setRegisterForm={ setRegisterForm } setView={ setView } />
       case 2: 
-        return "A Jugar"
+        return <Round playerOne={ playerOne } playerTwo={ playerTwo } setView={ setView } />
+      case 3: 
+        return <Winner setView={ setView } />
       default:
         return <RegisterPlayers setPlayerOne={ setPlayerOne } setPlayerTwo={ setPlayerTwo } setRegisterForm={ setRegisterForm } />
     }
