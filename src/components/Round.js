@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { validate } from '@babel/types';
 
 function Round(props){
     
@@ -44,7 +43,7 @@ function Round(props){
         validateWinRound();
     } 
     return(
-        <div>
+        <div className={ turn ? 'turn-player-two' : 'turn-player-one'}>
             <h1>Round { round }</h1>
             <h2>{ turn ? `[Player 2] ${p2.nick}` : `[Player 1] ${p1.nick}` } is your turn! </h2>
                 

@@ -11,3 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.all-moves {
+  display: flex;
+  margin: 1em auto;
+  max-width: 900px;
+  justify-content: center;
+}
+.all-moves .move {
+  width: 140px;
+  border-radius: 5px;
+  border: 1px solid;
+  text-align: center;
+  padding: 1em;
+  background: #9C27B0;
+  font-size: 1.2em;
+  font-weight: 800;
+  color: white;
+}
+.turn-player-one {
+  background: rgba(132, 111, 247, 0.13);
+}
+.turn-player-two {
+  background: rgba(255, 87, 87, 0.13);
+}
+.score {
+  max-width: 600px;
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.score strong {
+  font-size: 1.2em;
+}
+.score .p1-score {
+  background-color: rgba(118, 255, 47, 0.2);
+  border-radius: 10px 0 0 10px;
+}
+.score .p2-score {
+  background-color: rgba(244, 67, 54, 0.17);
+  border-radius: 0px 10px 10px 0;
+}
+.score .p1-score, 
+.score .p2-score {
+  text-align: center;
+  padding: 0.8em 1.3em;
+  border: 1px solid #e8e8e8;
+}
+.score .p1-score p, 
+.score .p2-score p {
+  font-size: 3em;
+  margin-bottom: 5px;
+}
+.score .p1-score p {
+  color: #15921b;
+}
+.score .p2-score p {
+  color: #ad0000;
+}
+.winner .return-new-players {
+  padding: 0.7em 3em;
+  border: 1px solid #08b115;
+  border-radius: 10px;
+  margin: 1em auto;
+  max-width: 180px;
+  text-align: center;
+  font-weight: 800;
+  background-color: #12c720;
+  color: #fff;
+}
+.winner.return-new-players:hover {
+  background: #ad0000;
+}
