@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'semantic-ui-react';
+import { getMoves } from '../api';
 
 function Round(props){
     
     const { players, setView } = props;
 
     const [round, setRound] = useState(1);
-    const [playersCreator, setPlayersCreator] = useState(players);
-    const [moves, setMoves] = useState([{move: 'paper', kills: 'rock'}, {move: 'rock', kills: 'scissors'}, {move: 'scissors', kills: 'paper'}]);
+    const [moves, setMoves] = useState([]);
     const [p1, setP1] = useState({ id: 0, nick: "", wins: 0, currentMove: "", currentKills: "none1" });
     const [p2, setP2] = useState({ id: 0, nick: "", wins: 0, currentMove: "", currentKills: "none2" });
     const [turn, setTurn] = useState(false);
@@ -18,9 +18,14 @@ function Round(props){
             setP1({id: players[0][0].id, nick: players[0][0].name, wins: players[0][0].wins, currentMove: "", currentKills: "none1"})
         }
         if(players.length && p2.id === 0){
-            setP1({id: players[0][1].id, nick: players[0][1].name, wins: players[0][1].wins, currentMove: "", currentKills: "none1"})
+            setP2({id: players[0][1].id, nick: players[0][1].name, wins: players[0][1].wins, currentMove: "", currentKills: "none1"})
+        }
+        if(moves.length === 0){
+            getMoves().then(res => {
+                setMoves(res.data)
+            })
         }         
-    }, [players, p1, p2]);
+    }, [moves, players, p1, p2]);
 
     const validateWinRound = () => {
         if(p1.score === 3){
