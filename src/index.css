@@ -11,6 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.header {
+  background-color: black;
+  color: white;
+  padding: 1em;
+  border-bottom: 4px solid #ff5e00
+}
 .all-moves {
   display: flex;
   margin: 1em auto;
@@ -18,21 +24,42 @@ code {
   justify-content: center;
 }
 .all-moves .move {
-  width: 140px;
-  border-radius: 5px;
-  border: 1px solid;
-  text-align: center;
-  padding: 1em;
   background: #9C27B0;
+  border: 1px solid #9628a9;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  color: white;
+  text-align: center;
   font-size: 1.2em;
   font-weight: 800;
-  color: white;
+  margin: 3px;
+  padding: 1em;
+  width: 140px;
 }
+.all-moves .move:hover {
+  background: #50125a;
+  border-color: #580067;
+  font-weight: 800;
+}
+.turn-player-one,
+.turn-player-two {
+  padding: 3em;
+} 
 .turn-player-one {
-  background: rgba(132, 111, 247, 0.13);
+  background: url('./assets/bg-p1.png') repeat-x;
 }
 .turn-player-two {
-  background: rgba(255, 87, 87, 0.13);
+  background: url('./assets/bg-p2.png') repeat-x;
+}
+.send-attack-zone{
+  display: block;
+  max-width: 430px;
+  margin: auto;
+}
+.ui.orange.button.btn-turn {
+  box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  display: block;
+  margin: 1em auto; 
 }
 .score {
   max-width: 600px;
@@ -44,11 +71,11 @@ code {
   font-size: 1.2em;
 }
 .score .p1-score {
-  background-color: rgba(118, 255, 47, 0.2);
+  background-color: #b1dffc;
   border-radius: 10px 0 0 10px;
 }
 .score .p2-score {
-  background-color: rgba(244, 67, 54, 0.17);
+  background-color: #ffcbc4;
   border-radius: 0px 10px 10px 0;
 }
 .score .p1-score, 
