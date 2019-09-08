@@ -2,31 +2,55 @@ import React, { useState } from 'react';
 import RegisterPlayers from './components/RegisterPlayers';
 import Round from './components/Round';
 import Winner from './components/Winner';
+import { Icon } from 'semantic-ui-react';
+import { postPlayers } from './api';
+
 function App() {
   
   const [view, setView] = useState(1);
-  const [playerOne, setPlayerOne] = useState("");
-  const [playerTwo, setPlayerTwo] = useState("");
-  const [registerForm, setRegisterForm] = useState(true); 
+  const [registerForm, setRegisterForm] = useState({nick1: "", nick2:"", error: false}); 
+  const [players, setPlayers] = useState([]);
+  const [playerTwo, setPlayerTwo] = useState({});
+
+  const handleSubmit = () => {
+    // Validations
+    if(registerForm.nick1.length <= 2 && registerForm.nick2.length <= 2){
+      setRegisterForm({ ...registerForm, error: true });
+      return;
+    }
+    if(registerForm.nick1 === registerForm.nick2 && registerForm.nick2 === registerForm.nick1){
+      setRegisterForm({ ...registerForm, error: true });  
+      return;
+    }
+
+    setRegisterForm({ ...registerForm, error: true });  
+    setView(2);
+
+    const newPlayers = { name_p1: registerForm.nick1, name_p2: registerForm.nick2 }
+    postPlayers(newPlayers).then(res => {
+      setPlayers([res.data.data])
+    })
+}
 
   
   const handleViews = (view) => {
     switch (view){
       case 1: 
-        return <RegisterPlayers setPlayerOne={ setPlayerOne } setPlayerTwo={ setPlayerTwo } setRegisterForm={ setRegisterForm } setView={ setView } />
+        return <RegisterPlayers registerForm={ registerForm } setRegisterForm={ setRegisterForm } handleSubmit={ handleSubmit } setView={ setView } />
       case 2: 
-        return <Round playerOne={ playerOne } playerTwo={ playerTwo } setView={ setView } />
+        return <Round players={ players } setView={ setView } />
       case 3: 
         return <Winner setView={ setView } />
       default:
-        return <RegisterPlayers setPlayerOne={ setPlayerOne } setPlayerTwo={ setPlayerTwo } setRegisterForm={ setRegisterForm } />
+        return <RegisterPlayers registerForm={ registerForm } setRegisterForm={ setRegisterForm } handleSubmit={ handleSubmit } setView={ setView } />
     }
   }
 
-
   return (
     <div className="App">
-      <h1>CachiPum!</h1>
+      <header className="header">
+        <h1 className="header-title"><Icon name="game"/> CachiPum!</h1>
+      </header>
       { handleViews(view) }
     </div>
   );
