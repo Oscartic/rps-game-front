@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button } from 'semantic-ui-react';
+import { Form, Input, Button, Icon } from 'semantic-ui-react';
 import blue from '../assets/blue.png';
 import red from '../assets/red.png';
 function RegisterPlayers(props){
@@ -9,7 +9,7 @@ function RegisterPlayers(props){
     return(
         <div className="container-register-winner">
             <h2>Enter Players nicknames</h2>
-            { registerForm.error ? <div>Cada nickName debe tener mas de dos caracteres y deben ser diferentes</div> : "" }
+            { registerForm.error ? <div className="alert"><Icon name="exclamation" /> Each nickName must have more than two characters and must be different.</div> : "" }
             <Form onSubmit={handleSubmit}>
                 <Form.Group widths='equal'>
                     <div><img src={blue} alt="Player One"/></div>
