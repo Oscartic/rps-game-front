@@ -18,7 +18,7 @@ function Round(props){
             setP1({id: players[0][0].id, nick: players[0][0].name, wins: players[0][0].wins, currentMove: "", currentKills: "none1"})
         }
         if(players.length && p2.id === 0){
-            setP2({id: players[0][1].id, nick: players[0][1].name, wins: players[0][1].wins, currentMove: "", currentKills: "none1"})
+            setP2({id: players[0][1].id, nick: players[0][1].name, wins: players[0][1].wins, currentMove: "", currentKills: "none2"})
         }
         if(moves.length === 0){
             getMoves().then(res => {
@@ -28,12 +28,13 @@ function Round(props){
     }, [moves, players, p1, p2]);
 
     const validateWinRound = () => {
-        if(p1.score === 3){
+        
+        if(p1.wins === 2){
             alert("p1 es el ganador!");
             setView(3);
             return;
         }
-        if(p2.score === 3){
+        if(p2.wins === 2){
             alert("p2 es el ganador!");
             setView(3);
             return;
@@ -52,18 +53,26 @@ function Round(props){
     const handleLaunchAttack = () => {
         let currentRound = round;
         setTurn(!turn);
-        if(p1.currentKills === p2.currentMove){
-            let newPoint = p1.score + 1;
-            setP1({...p1, score: newPoint, currentKills: 'none1'})
-            setRound(currentRound + 1);
+
+        if(turn){
+
+            if(p1.currentKills === p2.currentMove){
+                let pointBlue = p1.wins + 1;
+                setP1({...p1, wins: pointBlue, currentMove: ""})
+                console.log("punto para azul")
+            }
+            if(p2.currentKills === p1.currentMove) {
+                let pointRed = p2.wins + 1;
+                setP2({...p2, wins: pointRed, currentMove: "" })
+                console.log("punto para rojo")
+            }
+
             validateWinRound();
-        } else if(p2.currentKills === p1.currentMove) {
-            let newPoint = p2.score + 1;
-            setP2({...p2, score: newPoint, currentKills: 'none2'})
             setRound(currentRound + 1);
-            validateWinRound();
         }
     }
+
+   
 
     return(
         <div className={ turn ? 'turn-player-two' : 'turn-player-one'}>
@@ -75,7 +84,9 @@ function Round(props){
                     <div key={move.move} className={ currentSelectAttack ? 'move selected-move' : 'move'} onClick={() => handleTurn(move.move, move.kills)}>{move.move}</div>
                 ))}
             </div>
-            
+            <div className="your-arm">
+                { turn ? `${p2.currentMove}` : `${p1.currentMove}` }
+            </div>
             <div className="send-attack-zone">
                 <Button fluid className="btn-turn" color="orange" onClick={() => handleLaunchAttack()}>Launch attack</Button>
             </div>
