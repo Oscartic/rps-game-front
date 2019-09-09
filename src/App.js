@@ -10,20 +10,27 @@ function App() {
   const [view, setView] = useState(1);
   const [registerForm, setRegisterForm] = useState({nick1: "", nick2:"", error: false}); 
   const [players, setPlayers] = useState([]);
-  const [playerTwo, setPlayerTwo] = useState({});
+  const [winner, setWinner] = useState({id: 0, playerWinner: '', isWinner: false});
 
   const handleSubmit = () => {
     // Validations
-    if(registerForm.nick1.length <= 2 && registerForm.nick2.length <= 2){
+    let name1 = registerForm.nick1;
+    let name2 = registerForm.nick2;
+    if(name1.length < 2){
       setRegisterForm({ ...registerForm, error: true });
       return;
     }
-    if(registerForm.nick1 === registerForm.nick2 && registerForm.nick2 === registerForm.nick1){
+    if(name2.length < 2){
+      setRegisterForm({ ...registerForm, error: true });
+      return;
+    }
+
+    if(name1 === name2 && name2 === name1){
       setRegisterForm({ ...registerForm, error: true });  
       return;
     }
 
-    setRegisterForm({ ...registerForm, error: true });  
+    setRegisterForm({ ...registerForm, error: false });  
     setView(2);
 
     const newPlayers = { name_p1: registerForm.nick1, name_p2: registerForm.nick2 }
@@ -38,9 +45,9 @@ function App() {
       case 1: 
         return <RegisterPlayers registerForm={ registerForm } setRegisterForm={ setRegisterForm } handleSubmit={ handleSubmit } setView={ setView } />
       case 2: 
-        return <Round players={ players } setView={ setView } />
+        return <Round players={ players } winner={ winner } setWinner={ setWinner } setView={ setView } />
       case 3: 
-        return <Winner setView={ setView } />
+        return <Winner winner={ winner } setWinner={ setWinner } setView={ setView } setRegisterForm={ setRegisterForm } />
       default:
         return <RegisterPlayers registerForm={ registerForm } setRegisterForm={ setRegisterForm } handleSubmit={ handleSubmit } setView={ setView } />
     }
