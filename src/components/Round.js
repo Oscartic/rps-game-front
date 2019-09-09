@@ -4,7 +4,7 @@ import { getMoves } from '../api';
 
 function Round(props){
     
-    const { players, setView } = props;
+    const { players, setView, winner, setWinner } = props;
 
     const [round, setRound] = useState(1);
     const [moves, setMoves] = useState([]);
@@ -24,19 +24,21 @@ function Round(props){
             getMoves().then(res => {
                 setMoves(res.data)
             })
-        }         
-    }, [moves, players, p1, p2]);
+        }       
+    }, [moves, players, p1, p2, winner]);
 
     const validateWinRound = () => {
         
         if(p1.wins === 2){
             alert("p1 es el ganador!");
             setView(3);
+            setWinner({ id: p1.id, playerWinner: p1.nick, isWinner: true });
             return;
         }
         if(p2.wins === 2){
             alert("p2 es el ganador!");
             setView(3);
+            setWinner({ id: p2.id, playerWinner: p2.nick, isWinner: true });
             return;
         }
         
