@@ -17,6 +17,13 @@ code {
   padding: 1em;
   border-bottom: 4px solid #ff5e00
 }
+.container-register-winner{
+  max-width: 530px;
+  display: block;
+  margin: 4em auto;
+  align-content: center;
+  
+}
 .all-moves {
   display: flex;
   margin: 1em auto;
@@ -40,6 +47,7 @@ code {
   background: #50125a;
   border-color: #580067;
   font-weight: 800;
+  cursor: pointer;
 }
 .turn-player-one,
 .turn-player-two {
@@ -50,6 +58,18 @@ code {
 }
 .turn-player-two {
   background: url('./assets/bg-p2.png') repeat-x;
+}
+.your-arm{
+  max-width: 500px;
+  min-height: 19px;
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 1.4em;
+  color: #484848;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: capitalize;
 }
 .send-attack-zone{
   display: block;
@@ -64,7 +84,7 @@ code {
 .score {
   max-width: 600px;
   display: flex;
-  margin: auto;
+  margin: 2em auto;
   justify-content: center;
 }
 .score strong {

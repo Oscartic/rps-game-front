@@ -49,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <h1 className="header-title"><Icon name="game"/> CachiPum!</h1>
+        <h1 className="header-title"><Icon name="game"/> Rock, Paper or Scissors Game</h1>
       </header>
       { handleViews(view) }
     </div>
