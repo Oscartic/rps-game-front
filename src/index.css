@@ -17,12 +17,38 @@ code {
   padding: 1em;
   border-bottom: 4px solid #ff5e00
 }
-.container-register-winner{
+.container-register-winner {
   max-width: 530px;
   display: block;
   margin: 4em auto;
   align-content: center;
-  
+  text-align: center;
+}
+.container-register-winner .return-new-players {
+  padding: 0.7em 3em;
+  border: 1px solid #08b115;
+  border-radius: 10px;
+  margin: 1em auto;
+  max-width: 180px;
+  text-align: center;
+  font-weight: 800;
+  background-color: #12c720;
+  color: #fff;
+}
+.container-register-winner .alert {
+  color: #b16464;
+  padding: 7px;
+  border: 1px solid;
+  border-radius: 7px;
+  background: #fff0f0;
+  margin-bottom: 8px;
+}
+.container-register-winner .emperor {
+  max-width: 164px;
+  border-bottom: 2px solid #dadada;
+}
+.container-register-winner .return-new-players:hover {
+  background: #ad0000;
 }
 .all-moves {
   display: flex;
@@ -114,18 +140,4 @@ code {
 }
 .score .p2-score p {
   color: #ad0000;
-}
-.winner .return-new-players {
-  padding: 0.7em 3em;
-  border: 1px solid #08b115;
-  border-radius: 10px;
-  margin: 1em auto;
-  max-width: 180px;
-  text-align: center;
-  font-weight: 800;
-  background-color: #12c720;
-  color: #fff;
-}
-.winner.return-new-players:hover {
-  background: #ad0000;
 }
