@@ -1,4 +1,15 @@
+La aplicación en React esta expuesta en Netlify. La URL de acceso es:
+ https://nifty-goldstine-f55a69.netlify.com. 
+La app se conecta a Heroku donde se encuentra hospedada la Api.
+
+Si se requiere probar localmente, solamente es necesario descomentar la línea 3 del archivo src/api/index.js y correr:
+
+•	npm install
+•	npm run
+-----------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
